@@ -3,8 +3,8 @@ import LogoBar from './assets/js/components/LogoBar';
 import DiscoverSection from './assets/js/components/DiscoverSection';
 import Recommendation from './assets/js/components/Recommendation';
 import Review from './assets/js/components/Review';
-import resources from './data/resources';
-import initState from './data/initState';
+import resources from './assets/data/resources';
+import initState from './assets/data/initState';
 
 class App extends Component {
 
