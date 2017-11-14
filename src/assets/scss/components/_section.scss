@@ -1,0 +1,70 @@
+.section {
+
+}
+
+.section--welcome {
+  padding: 60px 0 31px 0;
+
+  .section {
+
+    &__title {
+      color: #666;
+      font-size: 22px;
+      line-height: 23px;
+      padding-bottom: 11px;
+      border-bottom: solid 1px #D2D2D2;
+      margin-bottom: 10px;
+
+      @media ( min-width: 1025px ) {
+        position: relative;
+        right: 40px;
+        padding-left: 25px;
+        width: 760px;
+      }
+
+    }
+
+    &__text {
+      color: #333;
+      font-size: 18px;
+      line-height: 23px;
+    }
+
+  }
+
+}
+
+.section--recommendations {
+
+  .section {
+
+    &__title {
+      margin: 0;
+      font-size: 46px;
+      line-height: 55px;
+      opacity: .15;
+      position: relative;
+      top: 15px;
+      right: 5px;
+    }
+
+  }
+
+}
+
+.section--reviews {
+
+  .section {
+
+    &__title {
+      margin: 0;
+      font-size: 46px;
+      line-height: 55px;
+      opacity: .15;
+      position: relative;
+      top: 15px;
+      right: 5px;
+    }
+
+  }
+}

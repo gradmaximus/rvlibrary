@@ -1,0 +1,40 @@
+.book {
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  float: left;
+
+  &__wrapper {
+  }
+
+  &__image {
+    margin-bottom: 20px;
+  }
+
+  &__image-wrapper {
+    padding: 0;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 18px;
+    color: #666;
+  }
+
+  &__author {
+    font-size: 12px;
+    line-height: 15px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  &__description {
+    font-size: 15px;
+    line-height: 18px;
+    color: #333;
+    margin-bottom: 16px;
+  }
+
+}

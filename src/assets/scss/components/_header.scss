@@ -1,0 +1,11 @@
+.header {
+
+  &__wrapper {
+    background: linear-gradient(to right,rgba(0, 0, 0, 0.5),  rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url('../img/curve.jpg') no-repeat;
+    background-position: left center;
+    background-size: cover;
+    padding-bottom: 40px;
+    padding-top: 40px;
+  }
+
+}
