@@ -68,3 +68,27 @@
 
   }
 }
+
+.section--search-results {
+
+  .section {
+
+    &__title {
+      font-size: 46px;
+      line-height: 55px;
+      opacity: .15;
+    }
+
+    &__text {
+
+    }
+
+    &__button {
+      background: linear-gradient(to top, #2362AE, #4BB8E6);
+      border-radius: 6px;
+      padding: 10px 20px;
+    }
+
+  }
+
+}

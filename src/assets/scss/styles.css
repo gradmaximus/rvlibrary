@@ -78,6 +78,16 @@ h1 {
   top: 15px;
   right: 5px; }
 
+.section--search-results .section__title {
+  font-size: 46px;
+  line-height: 55px;
+  opacity: .15; }
+
+.section--search-results .section__button {
+  background: linear-gradient(to top, #2362AE, #4BB8E6);
+  border-radius: 6px;
+  padding: 10px 20px; }
+
 .sidenav {
   background-color: #AC363A;
   font-family: 'aleobold', sans-serif;

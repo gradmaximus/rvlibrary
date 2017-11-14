@@ -111,9 +111,10 @@ class App extends Component {
 
               ) : (
 
-                <section className="searchResults  columns">
-                  <h2 className="subheader"><small>Search Results</small> <button className="button tiny" onClick={this.handleClearSearch}>Reset</button></h2>
-                    <p className="searchTerm">Your search for "{this.state.searchCategory.length ? this.state.searchCategory : ( this.state.searchTerm )}" resulted in {this.state.searchResults.length} results.</p>
+                <section className="columns section section--search-results">
+                  <h2 className="section__title">Search Results</h2>
+                  <button className="section__button section__button-reset" onClick={this.handleClearSearch}>Reset</button>
+                  <p className="section__text">Your search for "{this.state.searchCategory.length ? this.state.searchCategory : ( this.state.searchTerm )}" resulted in {this.state.searchResults.length} matches.</p>
                     { this.state.searchResults.map(function(resource, i) {
                       return (
                         <Recommendation
