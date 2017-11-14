@@ -1,0 +1,44 @@
+.optionsBox {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 auto;
+
+  &__button {
+    float: left;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    padding: 10px 30px;
+    font-size: 14px;
+    line-height: 18px;
+
+    &:hover {
+      color: black;
+    }
+
+  }
+
+  &__button-reserve {
+    background: linear-gradient(to top, #2362AE, #4BB8E6);
+  }
+
+  &__button-review {
+    border: solid 1px #2A70B7;
+    color: #286EB6;
+    padding: 9px 40px;
+  }
+
+  &__response {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    background-color: #AC363A;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 6px;
+  }
+
+}

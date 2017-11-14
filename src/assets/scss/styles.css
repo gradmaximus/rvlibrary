@@ -1,0 +1,255 @@
+#container {
+  background-color: #F7F7F7; }
+
+.contentContainer {
+  display: flex;
+  flex-grow: 1; }
+
+.row .row {
+  margin: 0; }
+
+.column + .column:last-child, .columns + .column:last-child, .column + .columns:last-child, .columns + .columns:last-child {
+  float: left; }
+
+@font-face {
+  font-family: 'aleobolditalic';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Aleo-BoldItalic-webfont.woff") format("woff"); }
+
+@font-face {
+  font-family: 'aleobold';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Aleo-Bold-webfont.woff") format("woff"); }
+
+@font-face {
+  font-family: 'aleoregular';
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Aleo-Regular-webfont.woff") format("woff"); }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+h1, h2, h3 {
+  font-family: 'aleobold', sans-serif; }
+
+h1 {
+  margin-bottom: 20px;
+  text-align: center; }
+
+.section--welcome {
+  padding: 60px 0 31px 0; }
+  .section--welcome .section__title {
+    color: #666;
+    font-size: 22px;
+    line-height: 23px;
+    padding-bottom: 11px;
+    border-bottom: solid 1px #D2D2D2;
+    margin-bottom: 10px; }
+    @media (min-width: 1025px) {
+      .section--welcome .section__title {
+        position: relative;
+        right: 40px;
+        padding-left: 25px;
+        width: 760px; } }
+  .section--welcome .section__text {
+    color: #333;
+    font-size: 18px;
+    line-height: 23px; }
+
+.section--recommendations .section__title {
+  margin: 0;
+  font-size: 46px;
+  line-height: 55px;
+  opacity: .15;
+  position: relative;
+  top: 15px;
+  right: 5px; }
+
+.section--reviews .section__title {
+  margin: 0;
+  font-size: 46px;
+  line-height: 55px;
+  opacity: .15;
+  position: relative;
+  top: 15px;
+  right: 5px; }
+
+.section--search-results .section__title {
+  font-size: 46px;
+  line-height: 55px;
+  opacity: .15; }
+
+.section--search-results .section__button {
+  background: linear-gradient(to top, #2362AE, #4BB8E6);
+  border-radius: 6px;
+  padding: 10px 20px; }
+
+.sidenav {
+  background-color: #AC363A;
+  font-family: 'aleobold', sans-serif;
+  overflow: hidden;
+  padding-top: 20px; }
+  .sidenav__title {
+    color: rgba(0, 0, 0, 0.25);
+    position: relative;
+    left: -25px; }
+  .sidenav__list {
+    list-style: none;
+    padding: 0;
+    margin-left: 0; }
+  .sidenav__list ul {
+    list-style: none;
+    float: left;
+    padding-bottom: 10px; }
+  .sidenav__subtitle {
+    font-size: 20px;
+    line-height: 24px;
+    padding: 10px 0;
+    color: white;
+    float: left; }
+    .sidenav__subtitle:hover {
+      color: white;
+      text-decoration: underline; }
+  .sidenav__item {
+    float: left;
+    width: 100%; }
+    .sidenav__item:hover {
+      text-decoration: underline; }
+  .sidenav__item a {
+    font-size: 15px;
+    line-height: 28px;
+    color: white; }
+
+.book {
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  float: left; }
+  .book__image {
+    margin-bottom: 20px; }
+  .book__image-wrapper {
+    padding: 0; }
+  .book__title {
+    font-size: 16px;
+    line-height: 18px;
+    color: #666; }
+  .book__author {
+    font-size: 12px;
+    line-height: 15px;
+    color: #666;
+    margin-bottom: 5px; }
+  .book__description {
+    font-size: 15px;
+    line-height: 18px;
+    color: #333;
+    margin-bottom: 16px; }
+
+.discover {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: solid 2px black;
+  margin-bottom: 20px;
+  overflow: hidden;
+  padding: 40px 20px;
+  position: relative; }
+  .discover__title {
+    color: rgba(255, 255, 255, 0.2);
+    font-family: 'Aleobold', serif;
+    font-size: 96px;
+    left: -25px;
+    line-height: 1;
+    position: absolute;
+    top: -10px; }
+  .discover__form {
+    margin-bottom: 10px; }
+  .discover #searchInput {
+    padding: 25px 25px;
+    font-size: 17px;
+    line-height: 21px;
+    position: relative;
+    top: 15px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    font-weight: bold; }
+    .discover #searchInput::placeholder {
+      color: #878787; }
+  .discover__button {
+    position: relative;
+    top: 15px;
+    text-align: center;
+    padding: 17px 1px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px; }
+    .discover__button:focus {
+      outline: none; }
+  .discover__button-search {
+    background-image: url("../img/search-button.png");
+    background-position: center;
+    background-size: contain;
+    color: transparent; }
+    .discover__button-search:hover {
+      color: transparent; }
+  .discover__button-reset {
+    padding: 17px 5.5px;
+    background: linear-gradient(to top, #2362AE, #4BB8E6); }
+
+.logobar {
+  background-color: black;
+  color: white;
+  padding: 20px 0; }
+  .logobar__title {
+    color: #AC363A;
+    font-size: 14px;
+    position: relative;
+    top: 9px; }
+  .logobar__identity-wrapper {
+    text-align: right; }
+  .logobar__identity {
+    line-height: 37px; }
+
+.rating {
+  color: #e34949; }
+
+.optionsBox {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 auto; }
+  .optionsBox__button {
+    float: left;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    padding: 10px 30px;
+    font-size: 14px;
+    line-height: 18px; }
+    .optionsBox__button:hover {
+      color: black; }
+  .optionsBox__button-reserve {
+    background: linear-gradient(to top, #2362AE, #4BB8E6); }
+  .optionsBox__button-review {
+    border: solid 1px #2A70B7;
+    color: #286EB6;
+    padding: 9px 40px; }
+  .optionsBox__response {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    background-color: #AC363A;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 6px; }
+
+.header__wrapper {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent, rgba(0, 0, 0, 0.5)), url("../img/curve.jpg") no-repeat;
+  background-position: left center;
+  background-size: cover;
+  padding-bottom: 40px;
+  padding-top: 40px; }

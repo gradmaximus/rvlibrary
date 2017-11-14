@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import LogoBar from './LogoBar';
-import DiscoverSection from './DiscoverSection';
-import Recommendation from './Recommendation';
-import Review from './Review';
-import resources from './data/resources';
-import initState from './data/initState';
+import LogoBar from './assets/js/components/LogoBar';
+import DiscoverSection from './assets/js/components/DiscoverSection';
+import Recommendation from './assets/js/components/Recommendation';
+import Review from './assets/js/components/Review';
+import resources from './assets/data/resources';
+import initState from './assets/data/initState';
 
 class App extends Component {
 
@@ -26,15 +26,13 @@ class App extends Component {
   handleSearchByString(event) {
     event.preventDefault();
     const searchTerm = event.target.value.toLowerCase();
-
     let resources = [...this.state.resources];
+
     const searchResults = resources.filter( function(resource) {
     return resource.title.toLowerCase().indexOf(searchTerm) > -1 ||
     resource.creator.toLowerCase().indexOf(searchTerm) > -1 ||
     resource.collection.toLowerCase().indexOf(searchTerm) > -1 ;
-
   });
-
 
     this.setState({
       searchResults,
@@ -71,8 +69,8 @@ class App extends Component {
     return (
       <div id="container">
         <LogoBar />
-        <div className="headerContainer">
-          <header className="discoverHeader row">
+        <div className="header__wrapper">
+          <header className="row header">
             <DiscoverSection
               clearSearch={this.handleClearSearch}
               search={this.handleSearchByString}
@@ -84,12 +82,13 @@ class App extends Component {
           <main className="small-12 medium-9 columns">
             { !this.state.showSearch ? (
               <div>
-                <section className="welcomeSection columns">
-                  <h2 className="welcome">Welcome, Joe Library User!</h2>
-                  <p>Welcome to the very much still in development Curve Library software. Over the next few months, the Road to Hire and ITA students will be working to make this much more full featured. In the meantime, you may use the categories on the right to search our collections or you can search for individual items using the search bar above.</p>
+                <section className="columns  section section--welcome">
+                  <h2 className="section__title">Welcome, Joe Library User!</h2>
+                  <p className="section__text">Welcome to the very much still in development Curve Library software. Over the next few months, the Road to Hire and ITA students will be working to make this much more full featured. In the meantime, you may use the categories on the right to search our collections or you can search for individual items using the search bar above.</p>
                 </section>
-                <section className="recommendations columns">
-                  <h2 className="subheader"><small>Recommended for you</small></h2>
+
+                <section className="columns large-12  section section--recommendations">
+                  <h2 className="section__title">Recommended for You</h2>
                     { this.state.recommendedBooks.map(function(resource, i) {
                       return (
                         <Recommendation
@@ -98,24 +97,24 @@ class App extends Component {
                           key={`recommendResult${i}`}
                         />
                       );
-
                     }, this)
                   }
-
                 </section>
-                <section className="reviews columns">
-                  <h2 className="subheader"><small>Recent Reviews</small></h2>
+
+                <section className="columns  section section--reviews">
+                  <h2 className="section__title">Recently Reviewed</h2>
                     <Review />
                     <Review />
                     <Review />
                 </section>
               </div>
 
-
               ) : (
-                <section className="searchResults columns">
-                  <h2 className="subheader"><small>Search Results</small> <button className="button tiny" onClick={this.handleClearSearch}>Reset</button></h2>
-                    <p className="searchTerm">Your search for "{this.state.searchCategory.length ? this.state.searchCategory : ( this.state.searchTerm )}" resulted in {this.state.searchResults.length} results.</p>
+
+                <section className="columns section section--search-results">
+                  <h2 className="section__title">Search Results</h2>
+                  <button className="section__button section__button-reset" onClick={this.handleClearSearch}>Reset</button>
+                  <p className="section__text">Your search for "{this.state.searchCategory.length ? this.state.searchCategory : ( this.state.searchTerm )}" resulted in {this.state.searchResults.length} matches.</p>
                     { this.state.searchResults.map(function(resource, i) {
                       return (
                         <Recommendation
@@ -124,61 +123,59 @@ class App extends Component {
                           key={`searchResult${i}`}
                         />
                       );
-
                     }, this)
                   }
                 </section>
               )
             }
-
           </main>
-          <aside className="small-12 medium-3 columns">
-            <h2 className="getInspired">Get Inspired</h2>
-            <ul className="collectionList">
-              <li><a href="/" className="collectionGroup" onClick={this.handleSearchByCategory}>Browse All</a></li>
-              <li><a href="/" className="collectionGroup">Recommendations</a>
+          <aside className="small-12 medium-3 columns  sidenav">
+            <h2 className="sidenav__title">Get Inspired</h2>
+            <ul className="sidenav__list">
+              <li><a href="/" className="sidenav__subtitle" onClick={this.handleSearchByCategory}>Browse All</a></li>
+              <li><a href="/" className="sidenav__subtitle">Recommendations</a>
                 <ul>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Senior Leadership Team</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>RV Board Members</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Harvard Business Review</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Year of Books</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Bill Gates</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Forbes</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Adam Grant</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Senior Leadership Team</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>RV Board Members</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Harvard Business Review</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Year of Books</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Bill Gates</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Forbes</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Adam Grant</a></li>
                 </ul>
               </li>
-              <li><a href="/" className="collectionGroup">Inspirations</a>
+              <li><a href="/" className="sidenav__subtitle">Inspirations</a>
                 <ul>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Jimi Hendrix</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Einstein</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Malala</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Da Vinci</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Dr. Seuss</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Louisa May Alcott</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Maya Angelou</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Nelson Mandela</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Jimi Hendrix</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Einstein</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Malala</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Da Vinci</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Dr. Seuss</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Louisa May Alcott</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Maya Angelou</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Nelson Mandela</a></li>
                 </ul>
               </li>
-              <li><a href="/" className="collectionGroup">Professional Development</a>
+              <li><a href="/" className="sidenav__subtitle">Professional Development</a>
                 <ul>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Business</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Communication</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Innovation</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Leadership</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Self-awareness</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Productivity</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Business</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Communication</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Innovation</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Leadership</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Self-awareness</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Productivity</a></li>
                 </ul>
               </li>
-              <li><a href="/" className="collectionGroup">Green Eggs &amp; Ham</a>
+              <li><a href="/" className="sidenav__subtitle">Green Eggs &amp; Ham</a>
                 <ul>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>LifeHack</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Culture Fest</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>She Is</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Biography</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Fiction</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Miscellaneous</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Uncategorized</a></li>
-                  <li><a href="/" className="collectionLinks" onClick={this.handleSearchByCategory}>Periodicals</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>LifeHack</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Culture Fest</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>She Is</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Biography</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Fiction</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Miscellaneous</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Uncategorized</a></li>
+                  <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Periodicals</a></li>
                 </ul>
               </li>
             </ul>

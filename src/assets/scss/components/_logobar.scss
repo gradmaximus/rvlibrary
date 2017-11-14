@@ -1,0 +1,21 @@
+.logobar {
+  background-color: black;
+  color: white;
+  padding: 20px 0;
+
+  &__title {
+    color: #AC363A;
+    font-size: 14px;
+    position: relative;
+    top: 9px;
+  }
+
+  &__identity-wrapper {
+    text-align: right;
+  }
+
+  &__identity {
+    line-height: 37px;
+  }
+
+}
