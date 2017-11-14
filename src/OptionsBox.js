@@ -33,8 +33,8 @@ class OptionsBox extends Component {
   render() {
     return (
         <div className="optionsBox">
-          <a href="/" onClick={(e) => this.handleResponseDisplay(e,"Functionality coming soon.")}>Order</a>
-          <a href="/" onClick={(e) => this.handleResponseDisplay(e,"Functionality coming soon.")}>Review</a>
+          <a href="/" onClick={(e) => this.handleResponseDisplay(e,"Functionality coming soon.")} className="button button-secondary">Order</a>
+          <a href="/" onClick={(e) => this.handleResponseDisplay(e,"Functionality coming soon.")} className="button">Review</a>
           <p className="responseBox">{this.state.showResponse ? this.state.response : ''}</p>
         </div>
     );

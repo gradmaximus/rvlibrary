@@ -25,7 +25,7 @@ function DiscoverSection(props) {
                   </div>
                 ) : (
                   <div className="small-1 columns">
-                    <button className="button tiny searchResetBtn" onClick={props.clearSearch}>Reset</button>
+                    <button className="button-secondary tiny searchResetBtn" onClick={props.clearSearch}>Reset</button>
                   </div>
                 )
               }
