@@ -111,7 +111,7 @@ h1 {
     padding: 10px 0;
     color: white;
     float: left; }
-    .sidenav__subtitle:hover {
+    a.sidenav__subtitle:hover {
       color: white;
       text-decoration: underline; }
   .sidenav__item {
@@ -138,6 +138,7 @@ h1 {
   .book__title {
     font-size: 16px;
     line-height: 18px;
+    min-height: 54px;
     color: #666; }
   .book__author {
     font-size: 12px;
@@ -194,7 +195,9 @@ h1 {
     color: transparent; }
     .discover__button-search:hover {
       color: transparent; }
-  .discover__button-reset {
+    .discover__button-search:focus {
+      color: transparent; }
+    .discover__button-reset {
     padding: 17px 5.5px;
     background: linear-gradient(to top, #2362AE, #4BB8E6); }
 

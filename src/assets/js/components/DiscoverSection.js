@@ -21,11 +21,18 @@ function DiscoverSection(props) {
               </div>
               { props.searchTerm.length === 0 ? (
                 <div className="small-1 columns">
-                  <button htmlFor="searchInput" className="discover__button discover__button-search">Search</button>
+                  <button
+                    htmlFor="searchInput"
+                    className="discover__button discover__button-search"
+                    onClick={ (e) => { e.preventDefault(); }}
+                  >Search</button>
                 </div>
               ) : (
                 <div className="small-1 columns">
-                  <button className="discover__button discover__button-reset" onClick={props.clearSearch}>Reset</button>
+                  <button
+                    className="discover__button discover__button-reset"
+                    onClick={props.clearSearch}
+                  >Reset</button>
                 </div>
               )
             }

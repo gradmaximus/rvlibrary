@@ -1,5 +1,6 @@
 import React from 'react';
 import OptionsBox from './OptionsBox';
+import placeholderBook from '../../img/placeholderBook.jpg';
 
 function book(props = "El Pooch of La Mancha") {
   return (
@@ -7,7 +8,7 @@ function book(props = "El Pooch of La Mancha") {
       <article className="book">
           <div className="row book__half-top">
             <div className="book__image-wrapper small-6 columns">
-              <img className="book__image" src="http://books.google.com/books/content?id=fdjqz0TPL2wC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="book cover" />
+              <img className="book__image" src={placeholderBook} alt="book cover" />
             </div>
             <div className="bookdetails small-6 columns">
               <h3 className="book__title">{props.title}</h3>
@@ -22,7 +23,7 @@ function book(props = "El Pooch of La Mancha") {
             </div>
           </div>
           <div className="row book__half-bottom">
-            <p className="reviewText  book__description">Description coming soon. Fearful inexpedient fearful will joy philosophy. Battle war transvaluation eternal-return society madness eternal-return chaos right free morality merciful.</p>
+            <p className="reviewText  book__description">Description coming soon. </p>
             <OptionsBox />
           </div>
       </article>

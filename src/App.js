@@ -36,6 +36,7 @@ class App extends Component {
 
     this.setState({
       searchResults,
+      "searchCategory": '',
       searchTerm,
       "showSearch": true
     });
@@ -56,7 +57,8 @@ class App extends Component {
     });
   }
 
-  handleClearSearch() {
+  handleClearSearch(event) {
+    event.preventDefault();
     this.setState({
       "searchResults": [],
       "searchCategory": "",
@@ -133,7 +135,7 @@ class App extends Component {
             <h2 className="sidenav__title">Get Inspired</h2>
             <ul className="sidenav__list">
               <li><a href="/" className="sidenav__subtitle" onClick={this.handleSearchByCategory}>Browse All</a></li>
-              <li><a href="/" className="sidenav__subtitle">Recommendations</a>
+              <li><h3 className="sidenav__subtitle">Recommendations</h3>
                 <ul>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Senior Leadership Team</a></li>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>RV Board Members</a></li>
@@ -144,7 +146,7 @@ class App extends Component {
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Adam Grant</a></li>
                 </ul>
               </li>
-              <li><a href="/" className="sidenav__subtitle">Inspirations</a>
+              <li><h3 className="sidenav__subtitle">Inspirations</h3>
                 <ul>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Jimi Hendrix</a></li>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Einstein</a></li>
@@ -156,7 +158,7 @@ class App extends Component {
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Nelson Mandela</a></li>
                 </ul>
               </li>
-              <li><a href="/" className="sidenav__subtitle">Professional Development</a>
+              <li><h3 className="sidenav__subtitle">Professional Development</h3>
                 <ul>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Business</a></li>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Communication</a></li>
@@ -166,7 +168,7 @@ class App extends Component {
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Productivity</a></li>
                 </ul>
               </li>
-              <li><a href="/" className="sidenav__subtitle">Green Eggs &amp; Ham</a>
+              <li><h3 className="sidenav__subtitle">Green Eggs &amp; Ham</h3>
                 <ul>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>LifeHack</a></li>
                   <li className="sidenav__item"><a href="/" onClick={this.handleSearchByCategory}>Culture Fest</a></li>
