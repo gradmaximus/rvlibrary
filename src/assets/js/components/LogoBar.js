@@ -6,11 +6,13 @@ function LogoBar() {
       <div className="logobar">
         <div className="row">
           <div className="columns small-6">
-            <img src={logo} alt="The Learning Curve Logo" />
-            <span className="logobar__title">Learning Curve Library</span>
+            <a href="/">
+              <img src={logo} alt="The Learning Curve Logo" />
+              <span className="logobar__title">Learning Curve Library</span>
+            </a>
           </div>
           <div className="columns small-6 logobar__identity-wrapper">
-            <span className="logobar__identity">Welcome, Joe Smith</span>
+            <span className="logobar__identity">Welcome, Joe!</span>
           </div>
         </div>
       </div>
