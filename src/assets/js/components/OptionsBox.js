@@ -8,35 +8,39 @@ class OptionsBox extends Component {
 
     this.state = {
       showResponse: false,
-      response: ''
+      response: '',
     };
   }
 
-  handleResponseDisplay(e, response) {
+  handleResponseDisplay(e) {
     e.preventDefault();
     this.setState({
       showResponse: true,
-      response
+      response: 'Functionality coming soon.',
     });
     this.handleClearResponse();
   }
 
   handleClearResponse() {
     const setState = () => this.setState({
-        showResponse: false,
-        response: ''
-      });
+      showResponse: false,
+      response: '',
+    });
 
     setTimeout(setState, 2000);
   }
 
   render() {
     return (
-        <div className="optionsBox">
-          <a href="/" className="optionsBox__button optionsBox__button-reserve" onClick={(e) => this.handleResponseDisplay(e,"Functionality coming soon.")}><i className="fa fa-plus" aria-hidden="true"></i> Reserve</a>
-          <a href="/" className="optionsBox__button optionsBox__button-review" onClick={(e) => this.handleResponseDisplay(e,"Functionality coming soon.")}>Review</a>
-          <p className="optionsBox__response">{this.state.showResponse ? this.state.response : ''}</p>
-        </div>
+      <div className="optionsBox">
+        <a
+          href="/"
+          className="optionsBox__button optionsBox__button-review"
+          onClick={this.handleResponseDisplay}
+        >View Details
+        </a>
+        <p className="optionsBox__response">{this.state.showResponse ? this.state.response : ''}</p>
+      </div>
     );
   }
 }

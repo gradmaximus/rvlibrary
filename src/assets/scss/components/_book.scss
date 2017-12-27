@@ -5,9 +5,7 @@
   margin: 0 auto;
   margin-bottom: 20px;
   float: left;
-
-  &__wrapper {
-  }
+  width: 100%;
 
   &__image {
     margin-bottom: 20px;
@@ -15,12 +13,17 @@
 
   &__image-wrapper {
     padding: 0;
+    height: 180px;
+    width: 120px;
+    overflow: hidden;
   }
 
   &__title {
     font-size: 16px;
     line-height: 18px;
     color: #666;
+    max-height: 110px;
+    overflow: hidden; 
   }
 
   &__author {
@@ -37,4 +40,7 @@
     margin-bottom: 16px;
   }
 
+  &__half-bottom {
+    padding-top: 12px;
+  }
 }

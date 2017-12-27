@@ -1,9 +1,7 @@
-const initState = {
-  "showSearch": false,
-  "searchTerm": "",
-  "searchCategory": "",
-  "resources": [],
-  "recommendedResources": [],
-  "searchResults": []
-}
-export default initState;
+export default {
+  showSearch: false,
+  searchTerm: '',
+  searchCategory: '',
+  resources: [],
+  searchResults: [],
+};

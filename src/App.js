@@ -1,69 +1,88 @@
 import React, { Component } from 'react';
 import LogoBar from './assets/js/components/LogoBar';
 import DiscoverSection from './assets/js/components/DiscoverSection';
-import Recommendation from './assets/js/components/Recommendation';
-import Review from './assets/js/components/Review';
-import resources from './assets/data/resources';
+import BookSimple from './assets/js/components/BookSimple';
 import initState from './assets/data/initState';
+import mockResourceData from './assets/data/mockResourceData';
 
 class App extends Component {
-
   constructor() {
     super();
     this.handleSearchByString = this.handleSearchByString.bind(this);
     this.handleSearchByCategory = this.handleSearchByCategory.bind(this);
     this.handleClearSearch = this.handleClearSearch.bind(this);
+    this.fetchResources = this.fetchResourceData.bind(this);
 
-    const recommendedBooks = resources.filter( function(resource) {
-      return resource.recommended === 1;
-    });
-    let initObj = Object.assign({}, initState);
-    initObj.recommendedBooks = recommendedBooks;
-    initObj.resources = resources;
-    this.state = initObj;
+    const initialState = Object.assign({}, initState);
+    const resourceData = this.fetchResourceData();
+
+    initialState.resources = resourceData.resources;
+
+    const recommended = resourceData.recommended;
+    const recentReviews = resourceData.recentReviews;
+    
+    initialState.recommendedResources = initialState.resources.filter(resource => (
+      recommended.includes(resource.isbn))
+    );
+
+    initialState.recentReviewedResources = initialState.resources.filter(resource => (
+      recentReviews.includes(resource.isbn))
+    );
+
+    this.state = initialState;
+  }
+
+  fetchResourceData() {
+    // Temporarily returning mock json
+    return mockResourceData;
   }
 
   handleSearchByString(event) {
     event.preventDefault();
-    const searchTerm = event.target.value.toLowerCase();
-    let resources = [...this.state.resources];
 
-    const searchResults = resources.filter( function(resource) {
-    return resource.title.toLowerCase().indexOf(searchTerm) > -1 ||
-    resource.creator.toLowerCase().indexOf(searchTerm) > -1 ||
-    resource.collection.toLowerCase().indexOf(searchTerm) > -1 ;
-  });
+    if (event.target.value.length === 0) {
+      this.handleClearSearch();
+      return;
+    }
+
+    const searchTerm = event.target.value.toLowerCase();
+
+    const searchResults = this.state.resources.filter(resource =>
+      resource.title.toLowerCase().indexOf(searchTerm) > -1 ||
+      resource.creator.toLowerCase().indexOf(searchTerm) > -1);
 
     this.setState({
       searchResults,
-      "searchCategory": '',
+      searchCategory: '',
       searchTerm,
-      "showSearch": true
+      showSearch: true,
     });
   }
 
   handleSearchByCategory(event) {
     event.preventDefault();
     const searchCategory = event.target.text;
-    let resources = [...this.state.resources];
     const searchResults = searchCategory !== 'Browse All' ?
-      resources.filter( function(resource) { return resource.collection === searchCategory; }) :
-      resources;
+      this.state.resources.filter(resource => resource.collection === searchCategory) :
+      this.state.resources;
 
     this.setState({
       searchResults,
       searchCategory,
-      "showSearch": true
+      showSearch: true,
     });
   }
 
   handleClearSearch(event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+
     this.setState({
-      "searchResults": [],
-      "searchCategory": "",
-      "searchTerm": "",
-      "showSearch": false
+      searchResults: [],
+      searchCategory: '',
+      searchTerm: '',
+      showSearch: false,
     });
   }
 
@@ -77,56 +96,54 @@ class App extends Component {
               clearSearch={this.handleClearSearch}
               search={this.handleSearchByString}
               searchTerm={this.state.searchTerm}
+              showSearch={this.state.showSearch}
             />
           </header>
         </div>
         <div className="contentContainer row">
           <main className="small-12 medium-9 columns">
-            { !this.state.showSearch ? (
+            {!this.state.showSearch ? (
               <div>
                 <section className="columns  section section--welcome">
                   <h2 className="section__title">Welcome, Joe Library User!</h2>
                   <p className="section__text">Welcome to the very much still in development Curve Library software. Over the next few months, the Road to Hire and ITA students will be working to make this much more full featured. In the meantime, you may use the categories on the right to search our collections or you can search for individual items using the search bar above.</p>
                 </section>
-
                 <section className="columns large-12  section section--recommendations">
                   <h2 className="section__title">Recommended for You</h2>
-                    { this.state.recommendedBooks.map(function(resource, i) {
-                      return (
-                        <Recommendation
-                          title={resource.title}
-                          author={resource.creator}
-                          key={`recommendResult${i}`}
-                        />
-                      );
-                    }, this)
-                  }
+                  {this.state.recommendedResources.map(resource =>
+                    (<BookSimple
+                      title={resource.title}
+                      author={resource.creator}
+                      description={resource.description}
+                      imageRef={resource.imageRef}
+                      key={resource.isbn}
+                    />))}
                 </section>
-
                 <section className="columns  section section--reviews">
                   <h2 className="section__title">Recently Reviewed</h2>
-                    <Review />
-                    <Review />
-                    <Review />
+                  {this.state.recentReviewedResources.map(resource => (
+                    <BookSimple
+                      title={resource.title}
+                      author={resource.creator}
+                      description={resource.description}
+                      imageRef={resource.imageRef}
+                      key={resource.isbn}
+                    />
+                  ))}
                 </section>
               </div>
-
               ) : (
-
                 <section className="columns section section--search-results">
                   <h2 className="section__title">Search Results</h2>
-                  <button className="section__button section__button-reset" onClick={this.handleClearSearch}>Reset</button>
-                  <p className="section__text">Your search for "{this.state.searchCategory.length ? this.state.searchCategory : ( this.state.searchTerm )}" resulted in {this.state.searchResults.length} matches.</p>
-                    { this.state.searchResults.map(function(resource, i) {
-                      return (
-                        <Recommendation
-                          title={resource.title}
-                          author={resource.creator}
-                          key={`searchResult${i}`}
-                        />
-                      );
-                    }, this)
-                  }
+                  <p className="section__text">Your search for {this.state.searchCategory.length ? this.state.searchCategory : (this.state.searchTerm)} resulted in {this.state.searchResults.length} matches.</p>
+                  {this.state.searchResults.map(resource =>
+                  (<BookSimple
+                    title={resource.title}
+                    author={resource.creator}
+                    description={resource.description}
+                    imageRef={resource.imageRef}
+                    key={resource.isbn}
+                  />))}
                 </section>
               )
             }
