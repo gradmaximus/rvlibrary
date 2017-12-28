@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function DiscoverSection(props) {
+const preventDefault = (e) => {
+  e.preventDefault();
+};
 
+const DiscoverSection = ({ searchTerm, search, clearSearch }) => {
   return (
     <section className="columns  discover">
       <h2 className="discover__title">Discover</h2>
@@ -14,28 +18,29 @@ function DiscoverSection(props) {
                   type="text"
                   id="searchInput"
                   className="discover__input"
-                  value={props.searchTerm}
-                  onChange={props.search}
+                  value={searchTerm}
+                  onChange={search}
                   placeholder="What are you looking for?"
                 />
               </div>
-              { props.searchTerm.length === 0 ? (
+              { searchTerm.length === 0 ? (
                 <div className="small-1 columns">
                   <button
                     htmlFor="searchInput"
                     className="discover__button discover__button-search"
-                    onClick={ (e) => { e.preventDefault(); }}
-                  >Search</button>
+                    onClick={preventDefault}
+                  >Search
+                  </button>
                 </div>
               ) : (
                 <div className="small-1 columns">
                   <button
                     className="discover__button discover__button-reset"
-                    onClick={props.clearSearch}
-                  >Reset</button>
+                    onClick={clearSearch}
+                  >Reset
+                  </button>
                 </div>
-              )
-            }
+              )}
             </div>
           </div>
         </div>
@@ -43,5 +48,11 @@ function DiscoverSection(props) {
     </section>
   );
 }
+
+DiscoverSection.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  search: PropTypes.func.isRequired,
+  clearSearch: PropTypes.func.isRequired,
+};
 
 export default DiscoverSection;
